@@ -1,43 +1,20 @@
-<% if (pagination == 2){ %>
-  <% page.posts.each(function(post){ %>
-    <%- partial('article', {post: post, index: true}) %>
-  <% }) %>
-  <% if (page.total > 1){ %>
-    <nav id="page-nav">
-      <%- paginator({
-        prev_text: '&laquo; Prev',
-        next_text: 'Next &raquo;'
-      }) %>
-    </nav>
-  <% } %>
-<% } else { %>
-  <% var last; %>
-  <% page.posts.each(function(post, i){ %>
-    <% var year = post.date.year(); %>
-    <% if (last != year){ %>
-      <% if (last != null){ %>
-        </div></section>
-      <% } %>
-      <% last = year; %>
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="<%- url_for('archives/' + year) %>" class="archive-year"><%= year %></a>
-        </div>
-        <div class="archives">
-    <% } %>
-    <%- partial('archive-post', {post: post, even: i % 2 == 0}) %>
-  <% }) %>
-  <% if (page.posts.length){ %>
-    </div></section>
-  <% } %>
+<div id="main">
+    <div id="post-list">
+        <ul class="archives-post-list">
+            <% page.posts.each(function(post){ %>
+            <li class="post-items" _href="<%- url_for(post.path) %>">
+                <%
+                    var info = post.date;
+                    if (is_category()) info = page.category;
+                    else if (is_tag()) info = page.tag;
+                %>
+                <p class="info"><%= info %></p>
+                <h2 class="post-item-title"><%= post.title %></h2>
+                <%- partial('_partial/article-meta', {post: post}) %>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+<%- partial('_partial/pagination') %>
 
-    <% if (page.total > 1){ %>
-    <nav id="page-nav">
-      <%- paginator({
-        prev_text: '&laquo; Prev',
-        next_text: 'Next &raquo;'
-      }) %>
-    </nav>
-  <% } %>
-
-<% } %>

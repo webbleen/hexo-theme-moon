@@ -1,189 +1,191 @@
-# >>> Basic Setup | 基础设置 <<<
+# layout -- 布局相关
 
-# Header | 主菜单
-## About Page: `hexo new page about`
-## Tags Cloud Page: `hexo new page tags`
+
+## menu -- 导航菜单显示{[@page:名字/*多语言支持*/,@url:地址,@icon:显示的图标],[...]}
 menu:
-  博客首页: /Home
-  作品展示: /works
-  留言打卡: /about
-  前端导航: /guide
-# 静心阅读: /tags
-# 光影之路: /instagram
-# 随笔: /tags/随笔
+- page: home
+  url: /
+  icon: fa-home
+- page: rss
+  url: /atom.xml
+  icon: fa-rss
 
-# Link to your avatar | 填写头像地址
-avatar: img/head.jpg
+## favicon -- 网站图标位置{@favicon}
+favicon: /favicon.ico
 
-# Small icon of Your site | 站点小图标地址
-favicon: img/favicon.png
-
-# Social info. Bar | 社交信息展示
-## Keep "mailto:" in Email | 设置 Email 时保留 "mailto:"
-## Encrypt email 加密邮件地址 http://ctrlq.org/encode/
-## RSS requires a plugin to take effect | 使用 RSS 需先安装对应插件
-## https://github.com/hexojs/hexo-generator-feed
-subnav:
-  mail: "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#119;&#101;&#98;&#98;&#108;&#101;&#101;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
-  github: "https://github.com/webbleen"
-  zhihu: "#"
-  weibo: "#"
-  google: "#"
-  twitter: "#"
-  linkedin: "#"
-  # facebook: "#"
-  # rss: /atom.xml
-  # pinterest: "#"
-  # QQ: "#"
-  # wechat: "#"
-  # douban: "#"
-  # pinboard: "#"
-  # stackoverflow: "#"
-  # Instagram: "#"
-  # segmentfault: "#"
-
-# >>> Conments 评论系统 <<<
-# Chose ONE as your comment system and keep others disable.
-# 选一个作为网站评论系统，其他保持禁用。
-
-disqus: 
-  #on: true
-  shortname: 
-  # https://help.disqus.com/customer/en/portal/articles/466208-what-s-a-shortname-
-  # It is unnecessary to enable disqus here if 
-  # you have set "disqus_shortname" in your site's "_config.yml" 
-
-duoshuo: 
-  on: true
-  domain: 
-  # 是否开启多说评论，http://duoshuo.com/create-site/
-  # 使用上面网址登陆你的多说，然后创建站点，在 domain 中填入你设定的域名前半部分
-  # http://<要填的部分>.duoshuo.com (domain只填上<>里的内容，不要填整个网址)
-
-youyan:
-  #on: true
-  id: 
-  # 是否开启友言评论，http://www.uyan.cc/index.php
-  # id 中填写你的友言用户数字ID，注册后进入后台管理即可查看
-  # 友言服务在 Web 环境下运行，普通本地环境无法查看，请部署后在线上测试。
-
-
-# >>> Style Customisation 样式自定义 <<<
-
-# Background | 背景
-## "background_sum": show images form /source/background/的图片数目
-## "on: true": 自动随机显示这5张图片
-## "on: false": 自定义显示图片设置background_image: 5
-background:
-  on: true
-  #on: false
-  background_sum: 24
-  background_image: 109
-
-highlight_style:
-  on: true
-  inline_code: 5
-  code_block: 5
-  # Set inline_code to style highlight text
-  # Chose a highlight theme for code block
-  # 通过 inline_code 切换内置文本高亮样式 Value: 0 - 9 可选
-  # 通过 code_block 切换内置代码高亮配色主题  Value: 0 - 4 
-
-blockquote_style:
-  #on: true
-  blockquote: 1  # Value: 0 - 7 可选
-  # 自定义文章「引用部分」的样式
-
-# 左边栏宽度 px
-left_col_width: 300
-
-# 目录中标题不换行
-# Keep TOC title on the same line | 
-toc_nowrap: false
-
-# 自定义"阅读全文"链接按钮的显示文字
-# Customize the text on excerpt link
-excerpt_link:  #修改more>>的文字
-enable: false
-
-# 是否显示边栏中的搜索框（仅样式，未添加搜索功能）
-# Search Box in left column
-search_box: true
-
-# 是否开启主页及加载头像时的动画效果
-# Animation in Homepage and Loading avatar
-animate: true
-
-
-# >>> Small features | 小功能设置 <<<
-
-# 是否开启边栏多标签切换
-# Birdhouse button in left column
-tagcloud: true
-
-# Blogroll, Link exchange | 友情链接
-# friends: false
-friends:
-  name: http://webbleen.github.io/
-
-# 打赏
-# 请在需要打赏的文章的md文件头部，设置属性reward: true
-
-# 打赏基础设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏
-reward_type: 2
-# 打赏wording
-reward_wording1: '纯属好玩'
-reward_wording2: '扫码打赏，你说多少就多少'
-# 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/img/alipay.jpg
-alipay: /img/alipay.png
-# 微信二维码图片地址
-weixin: /img/weixin.png
-
-#是否开启“关于我”。
-aboutme: 纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中
-#aboutme: false
-
-# 是否在新窗口打开链接
-# Open ALL link in a new tab
-open_in_new: false
-
-# Customize feed link 自定义订阅地址
+## rss --rss文件位置{@rss}
 rss: /atom.xml
 
+## widgets -- 6个左边小工具{@widgets:[notification,category,archive,popular,tagcloud,friends]}
+widgets:
+- notification
+- category
+- archive
+- popular
+- tagcloud
+- friends
 
-# >>> Vendors | 第三方工具 & 服务 <<<
+## widgets settings --各个小工具的设置
+### notification config --网站公告设置。支持 html 和 纯文本
+notification: |-
 
-# images viewer | 图片浏览器
-## http://www.fancyapps.com/fancybox/
-fancybox: true
+            <p>！大家好，欢迎来到我的个人小站。</p>
 
-# Display Math(LaTeX, MathML...) | 数学公式支持
-## https://www.mathjax.org/
-mathjax: false
+### categories-list config --文章分类设置{@cate_config:{@show_count:是否显示数字，@show_current: 是否高亮当前category}}
+cate_config:
+ show_count: true
+ show_current: true
 
-# Socail Share | 是否开启分享
-# share: true
-baidushare: true
-#showshare: true
+### archives-list config
+### 文章归档设置{@arch_config:/*参数参考：https://hexo.io/zh-cn/docs/helpers.html#list-archives*/}
+arch_config:
+ type: 'monthly'
+ show_count: true
+ order: -1
 
-# 百度、谷歌站长验证。填写 HTML 标签 content
-# Site Verification for Google and Baidu. HTML label content.
-google_site: # pFW527fHrjfI0si2w4NQ0w3cTw12AvvuohAu1PUfqKA
-baidu_site: #c167b9feb4f0b208b712c79629c188e4
+### tagcloud config
+### 彩色标签云设置{@tagcloud_config:/*https://hexo.io/zh-cn/docs/helpers.html#tagcloud*/}
+tagcloud_config:
+ min_font: 0.14
+ max_font: 0.2
+ unit: rem
+ amount: 100
+ color: true
+ orderby: 'count'
+ start_color: '#6699cc'
+ end_color: '#0A407C'
 
-# Fill in Google Analytics tracking ID, #e.g. UA-XXXXX-X, or Baidu Analytics hash key
-google_analytics:
-baidu_analytics:
+### friends' links settings
+### 友链设置:{@links:[,,,]}
+links:
+- 主题作者: http://webbleen.github.io
 
-# 不蒜子网站计数设置
-# http://ibruce.info/2015/04/04/busuanzi/
-visit_counter:
-  on: true
-  site_visit: 海贼到访数
-  page_visit: 本页阅读量
 
-# A标签提示
-TipTitle: true
 
-# Loading
-# Loading: true
+# content -- 内容显示相关
+
+## show top posts or not
+## 是否开启置顶文章功能？若开启，请在文章的Front-matter中加入`top`字段，top值越大越靠前
+stick: true
+
+## social config
+## 社交功能设置 {@social:[url:地址,title:a标签的title,icon:显示图标],[]}
+social:
+- url: https://www.example1.com
+  title: freecodecamp
+  icon: fa-free-code-camp
+- url: https://www.example2.com
+  title: Follow me~
+  icon: fa-github
+
+
+## custom content config
+## 自定义内容设置
+### append copyright when copy the text
+### 添加版权保护 {@appendCopyright:{enable:是否开启,triggerCopyLength:触发的复制长度,appendText:追加信息}}
+appendCopyright:
+  enable: true
+  triggerCopyLength: 200
+  appendText: '商业转载请联系作者获得授权,非商业转载请注明出处 © example'
+
+### uncategory posts meta text
+### 当无目录时的显示文字，默认为'null'
+noCategoryText: '无'
+
+### outdated browser warning
+### 过低版本的浏览器提醒文字
+outdated_browser_text: '你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。'
+
+### outdated post warning
+### 文章过期提醒功能 {@warning:{days:临界天数,text:提醒文字/*%d为过期总天数占位符*/}}
+warning:
+  days: 300 #default is 300 days
+  text: '本文于%d天之前发表，文中内容可能已经过时。如有疑问，请在评论区留言。'
+
+### index article excerpt
+### 首页文章简介的图片
+### 规则:Front-matter中的自定义'img'字段 > 文章内的图片(随机获取) > defaultImgs(随机获取)
+defaultImgs:
+  - http://XXXX.example.jpg
+  - /img/bg.jpg
+excerptLength: 400
+
+### article meta
+### 文章信息(article meta)指首页和文章内页，与icon一起的信息
+### @whichCategory 指定显示哪个分类，默认为最后一个，可以指定，若指定的超过该文章的分类总长度， 显示最后一个
+whichCategory: 0
+
+### post footer
+### 作者信息部分设置
+high_song: 'high起来 &#128541;'  ### 歌曲显示文字，若不需要该功能，则留空或移除
+author_img: /img/head.jpg
+author_profile_page: /about.html
+donate:
+  text: '赠我一杯 &#128536;' ### 打赏功能显示文字，若不需要，则留空或移除
+  img: ### 打赏图片地址
+  - url: /img/alipayimg.png
+    alt: '支付宝付款'
+  - url: /img/wechatimg.png
+    alt: '微信付款'
+
+### support html&text like notification's support in this theme,
+### but please don't use <li> tag
+### 版权声明文字，支持html/text，但不要使用<li>标签
+cc: |-
+        <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+        知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+        </a>
+### highlight
+### 内置两款代码主题
+highlightStyle: github
+# third party service --第三方服务
+## busuanzi --不蒜子站点总人数统计 {@visits_count:{enable:是否开启,icon:图标,text:显示文字/*%d为占位符*/,method:统计方式}}
+visits_count:
+  enable:  true
+  icon: fa-bar-chart
+  text: '欢迎第%d位小伙伴~'
+  count_method: 'uv' ### uv 为多次点击算一次，pv为每篇文章算一次
+
+## leancloud --- leancloud 阅读量统计
+## {@leancloud:{enable:是否开启,className:创建的class,app_id:,app_key:,region:默认为中国地区,limits:热门文章显示总数}}
+leancloud:
+  enable: true
+  className: "BlogCounter"
+  app_id:
+  app_key:
+  region:
+  limits: 10
+
+## comments -- 评论框
+### disqus
+disqus_shortname:
+### duoshuo
+duoshuo_shortname:
+
+## analytics --统计功能
+baidu_anaylytics:
+google_anaylytics:
+
+## sitemap -- 站点验证
+google_vertification:
+baidu_vertification:
+## mathjax
+mathjax:
+  enable: true
+  src: //cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+# cdn or local files --开启对应文件的cdn，默认使用本地文件。国内用户建议开启而不是使用github上的文件
+## style cdn --样式 cdn
+## icon -- 官网地址：http://fontawesome.io/icons/
+fontAwesome: //cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css
+
+
+## script cdn --脚本cdn
+## leancloud -- 官网:https://leancloud.cn/
+leancloud_src: http://cdn1.lncld.net/static/js/2.1.0/av-min.js
+## busuanzi -- 官网：http://busuanzi.ibruce.info/
+busuanzi_src: //dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js
+
+# theme and site self settings
+since: 2016
+robot: 'all' ### 控制搜索引擎的抓取和索引编制行为，默认为all，搜索 `meta name="robots"` 或请参考： https://support.google.com/webmasters/answer/79812?hl=zh-Hans
+version: 1.0.1

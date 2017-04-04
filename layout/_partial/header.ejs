@@ -1,32 +1,16 @@
-<header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="<%- url_for() %>" id="logo"><%= config.title %></a>
-      </h1>
-      <% if (theme.subtitle){ %>
-        <h2 id="subtitle-wrap">
-          <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle %></a>
-        </h2>
-      <% } %>
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        <% for (var i in theme.menu){ %>
-          <a class="main-nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+<header <%if(!is_home()){%> style="position: absolute;" <%}%>>
+    <div id="site-meta">
+        <a href="<%- url_for()%>" id="logo">
+            <h1 class="title"><%= config.title%></h1>
+        </a>
+        <% if (config.subtitle){ %>
+        <h2 class="subtitle"><%= config.subtitle%></h2>
         <% } %>
-      </nav>
-      <nav id="sub-nav">
-        <% if (theme.rss){ %>
-          <a id="nav-rss-link" class="nav-icon" href="<%- theme.rss %>" title="RSS Feed"></a>
-        <% } %>
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <%- search_form({button: '&#xF002;'}) %>
-      </div>
     </div>
-  </div>
+    <ul id="nav">
+        <% theme.menu.forEach(function (item) {%>
+            <li><a href="<%- item.url%>"><i class="fa <%= item.icon%>"></i><%= __(item.page+'') %></a></li>
+        <%})%>
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i><%= __('search') %></a></li>
+    </ul>
 </header>

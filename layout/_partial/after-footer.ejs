@@ -1,33 +1,60 @@
-<%- js('https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min') %>
-<%- js('js/main') %>
-<%- partial('background') %>
-<%- partial('analytics/google-analytics') %>
-<%- partial('analytics/baidu-analytics') %>
-<% if (theme.mathjax){ %>
-<%- partial('mathjax') %>
-<% } %>
-<%- partial('scrolling-button') %>
-<%- partial('hide-labels') %>
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-<% if (theme.TipTitle){ %>
-  <%- partial('post/TipTitle') %>
-<% } %>
-<% if (theme.search_box){ %>
-    <script type="text/javascript">
-      window.onload = function(){
-        document.getElementById("search").onclick = function(){
-            console.log("search")
-            search();
-        }
-      }
-      function search(){
-        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+<ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <% if(is_post()){ %>
+    <li class="toc-btn fa fa-list-ul"></li>
+    <% } %>
+    <%
+    var enableDuoshuo = theme.duoshuo_shortname && theme.duoshuo_shortname.length > 0;
+    var enableDisqus = theme.disqus_shortname && theme.disqus_shortname.length > 0;
+    %>
 
-        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
-      }
-    </script>
+    <% if(page.comments && !is_home() && is_post() && (enableDuoshuo || enableDisqus)){ %>
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    <% } %>
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-spin"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<%if(is_post()){%>
+    <%- toc(page.content) %>
 <%}%>
+<%if(theme.high_song){%>
+    <%- js('js/highsong')%>
+<%}%>
+<%- partial('_thirdParty/mathjax')%>
+<%- js('js/search') %>
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = '<%= theme.appendCopyright.enable%>';
+    copyrightObj.triggerCopyLength = '<%= theme.appendCopyright.triggerCopyLength%>';
+    copyrightObj.appendText = '<%= theme.appendCopyright.appendText%>';
+    var leancloudObj = {};
+    leancloudObj.enable = '<%= theme.leancloud.enable%>';
+    leancloudObj.className = '<%= theme.leancloud.className%>';
+    leancloudObj.limits = '<%= theme.leancloud.limits%>';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "<%- config.search.path %>";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "<%- config.root %>" + search_path;
+    search.func =  _ajax.init();
+</script>
+<%- js('js/app') %>
